@@ -1,21 +1,81 @@
 @charset "UTF-8";
+/* ============================================
 
+Container
+
+============================================ */
+
+.image-container {
+  display: flex;
+  flex-direction: row;
+  /* 横方向へ配置 */
+  justify-content: space-around;
+  align-items: center;
+  /* 水鳥方向中央に配置 */
+}
+
+.image-container img {
+  width: auto;
+  /* 画像本来の幅を維持 */
+  height: auto;
+  /* 画像本来の高さを維持 */
+  max-width: 100%;
+  /* コンテナの幅を超えない様調整 */
+  margin-right: 10px;
+  /* 画像右側余白追加 */
+  border-radius: 40px;
+}
+
+.image-container img:last-child {
+  margin-right: 0;
+  /* 一番右端の余白の消去 */
+}
+/* ============================================
+
+Item&list
+
+============================================ */
+ul.item {
+  list-style: none;
+}
+li.list {
+  width: 70%;
+  height: 70%;
+  background-image: linear-gradient(
+    135deg,
+    transparent 1%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(30px);
+}
+/* ============================================
+
+Hover
+
+============================================ */
 /* ホバーして白黒変更 */
 .img-grayscale {
   transition: 0.4s;
 }
-.img-grayscale:hover {
+.img-grayscale-hover:hover {
   filter: grayscale(1);
+}
+/* ホバーして彩度変更 */
+.img-saturate-hover:hover {
+  filter: saturate(2);
+  /* 画像の彩度を２倍 */
 }
 
 /* ダークモードで彩度変更 */
 @media (prefers-color-scheme: dark) {
   body {
-    background: #000;
-    color: #dcdcdc;
+    background: #696969;
+    color: #d3d3d3;
   }
   .img-darkmode {
-    filter: saturate(80%) brightness(50%);
+    filter: saturate(80%) brightness(30%);
   }
 }
 
@@ -30,9 +90,19 @@ body {
 
 img {
   display: block;
-  width: 600px;
+  width: 100%;
+  height: 100%;
+}
+
+h1 {
+  padding: 1rem 0;
+  text-align: center;
 }
 
 h2 {
+  padding: 1rem 0;
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
   margin-top: 3rem;
 }
