@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/* ホバーして白黒変更 */
+.img-grayscale {
+  transition: 0.4s;
+}
+.img-grayscale:hover {
+  filter: grayscale(1);
+}
+
+/* ダークモードで彩度変更 */
+@media (prefers-color-schme: dark) {
+  body {
+    background: #696969;
+    color: #f5f5f5;
+  }
+  .img-darkmode {
+    filter: saturate(80%) brightness(45%);
+  }
+}
+
+/* ============================================
+
+Basicstyle
+
+============================================ */
+body {
+  padding: 1rem;
+}
+
+img {
+  display: block;
+  width: 600px;
+}
+
+h2 {
+  margin-top: 3rem;
+}
