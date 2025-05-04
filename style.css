@@ -9,13 +9,13 @@
 }
 
 /* ダークモードで彩度変更 */
-@media (prefers-color-schme: dark) {
+@media (prefers-color-scheme: dark) {
   body {
     background: #696969;
     color: #f5f5f5;
   }
   .img-darkmode {
-    filter: saturate(80%) brightness(45%);
+    filter: saturate(80%) brightness(50%);
   }
 }
 
