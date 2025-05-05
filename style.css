@@ -5,42 +5,17 @@ Container
 
 ============================================ */
 
-.image-container {
+.image-container ul.item {
   display: flex;
   flex-direction: row;
-  /* 横方向へ配置 */
-  justify-content: space-around;
-  align-items: center;
-  /* 水鳥方向中央に配置 */
-}
-
-.image-container img {
-  width: auto;
-  /* 画像本来の幅を維持 */
-  height: auto;
-  /* 画像本来の高さを維持 */
-  max-width: 100%;
-  /* コンテナの幅を超えない様調整 */
-  margin-right: 10px;
-  /* 画像右側余白追加 */
-  border-radius: 40px;
-}
-
-.image-container img:last-child {
-  margin-right: 0;
-  /* 一番右端の余白の消去 */
-}
-/* ============================================
-
-Item&list
-
-============================================ */
-ul.item {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
-li.list {
-  width: 70%;
-  height: 70%;
+
+.image-container li.list {
+  width: auto;
+  height: auto;
   background-image: linear-gradient(
     135deg,
     transparent 1%,
@@ -49,6 +24,38 @@ li.list {
   border-radius: 40px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(30px);
+}
+
+.image-container li.list h1 {
+  padding-bottom: 0.5rem;
+  /* 下側のpadding縮小 */
+  text-align: center;
+}
+
+.image-container li.list h2 {
+  padding-top: 0.5rem;
+  /* 上側padding縮小 */
+  padding-bottom: 0.5rem;
+  /* 下側padding縮小 */
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 0;
+  /* 上側margin消去 */
+}
+
+.image-container li.list:last-child {
+  margin-right: 0;
+  /* 最後のリストの右側余白の消去 */
+}
+
+.image-container img {
+  max-width: 500px;
+  /* 画像の最大幅調整 */
+  max-height: 500px;
+  border-radius: 40px;
+  display: block;
+  margin: 0 auto;
 }
 /* ============================================
 
@@ -77,32 +84,4 @@ Hover
   .img-darkmode {
     filter: saturate(80%) brightness(30%);
   }
-}
-
-/* ============================================
-
-Basicstyle
-
-============================================ */
-body {
-  padding: 1rem;
-}
-
-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-h1 {
-  padding: 1rem 0;
-  text-align: center;
-}
-
-h2 {
-  padding: 1rem 0;
-  font-weight: bold;
-  text-align: center;
-  font-size: 30px;
-  margin-top: 3rem;
 }
