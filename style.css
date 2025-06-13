@@ -1,21 +1,31 @@
 @charset "UTF-8";
-/* ============================================
-
+/*============================================
+  
 Container
 
-============================================ */
-
-.image-container ul.item {
+============================================*/
+.image-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start; /* flex-start に変更し、より標準的な配置に */
+  flex-wrap: wrap; /* コンテンツが多すぎる場合に折り返すように追加 */
+  gap: 20px; /* アイテム間の余白を統一するために追加 */
+}
+
+.image-container ul.item {
+  display: flex; /* flex-start ではなく flex を使用し、子要素の配置を柔軟に */
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-wrap: wrap; /* リストアイテムが多すぎる場合に折り返すように追加 */
+  justify-content: center; /* リストアイテムを中央に配置 */
+  gap: 20px; /* リストアイテム間の余白を統一するために追加 */
 }
 
 .image-container li.list {
-  width: auto;
-  height: auto;
+  width: auto; /* 特定の幅が必要な場合は指定 */
+  height: auto; /* 特定の高さが必要な場合は指定 */
   background-image: linear-gradient(
     135deg,
     transparent 1%,
@@ -24,63 +34,69 @@ Container
   border-radius: 40px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(30px);
+  padding: 20px; /* コンテンツのパディングを追加 */
+  box-sizing: border-box; /* パディングとボーダーを幅に含める */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 中央揃え */
+  text-align: center; /* テキストも中央揃え */
 }
 
 .image-container li.list h1 {
   padding-bottom: 0.5rem;
-  /* 下側のpadding縮小 */
   text-align: center;
+  margin-top: 0; /* 上部の余白を削除 */
 }
 
 .image-container li.list h2 {
   padding-top: 0.5rem;
-  /* 上側padding縮小 */
   padding-bottom: 0.5rem;
-  /* 下側padding縮小 */
   font-weight: bold;
   text-align: center;
   font-size: 30px;
-  margin-top: 0;
-  /* 上側margin消去 */
+  margin-bottom: 0;
 }
 
-.image-container li.list:last-child {
+/* 不要な重複を削除 */
+/* .image-container li.list:last-child {
   margin-right: 0;
-  /* 最後のリストの右側余白の消去 */
-}
+} */
 
 .image-container img {
-  max-width: 500px;
-  /* 画像の最大幅調整 */
-  max-height: 500px;
+  max-width: 100%; /* 親要素の幅に合わせて画像を調整 */
+  height: auto; /* アスペクト比を維持 */
   border-radius: 40px;
   display: block;
-  margin: 0 auto;
+  margin-bottom: 20px; /* %ではなくpxで具体的な値を設定 */
 }
-/* ============================================
 
-Hover
+/*============================================
 
-============================================ */
+  Hover & Dark Mode
+
+============================================*/
+/* ホバー効果のベースクラス */
+.img-hover-effect {
+  transition: filter 0.4s ease-in-out; /* transitionを共通化 */
+}
+
 /* ホバーして白黒変更 */
-.img-grayscale {
-  transition: 0.4s;
-}
-.img-grayscale-hover:hover {
+.img-grayscale:hover {
   filter: grayscale(1);
 }
+
 /* ホバーして彩度変更 */
-.img-saturate-hover:hover {
+.img-saturate:hover {
   filter: saturate(2);
-  /* 画像の彩度を２倍 */
 }
 
-/* ダークモードで彩度変更 */
+/* ダークモードでの調整 */
 @media (prefers-color-scheme: dark) {
   body {
     background: #696969;
     color: #d3d3d3;
   }
+
   .img-darkmode {
     filter: saturate(80%) brightness(30%);
   }
